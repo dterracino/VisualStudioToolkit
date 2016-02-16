@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<Extern href="VSDbgCmd.h"/>
+	<Extern href="VsDebugGuids.h"/>
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+
+	<Commands package="guidVisualStudioPackage">
+		<Buttons>
+			<Button guid="guidVisualStudioPackageCmdSet" id="BreakInCurrentDocumentToolbarCommandId" priority="0x0400" type="Button">
+				<Parent guid="guidVSDebugGroup" id="IDG_EXECUTION" />
+				<Icon guid="guidImages" id="BreakInCurrentDocumentIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>Break In Current Document</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="guidVisualStudioPackageCmdSet" id="BreakInCurrentDocumentMenuCommandId" priority="0x0400" type="Button">
+				<Parent guid="guidVSDebugGroup" id="IDG_DEBUG_TOOLBAR_EXECUTION" />
+				<Icon guid="guidImages" id="BreakInCurrentDocumentIcon" />
+				<Strings>
+					<ButtonText>Break In Current Document</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+
+		<Bitmaps>
+			<Bitmap guid="guidImages" href="Resources\BreakInCurrentDocument.png" usedList="BreakInCurrentDocumentIcon"/>
+		</Bitmaps>
+	</Commands>
+
+	<VisibilityConstraints>
+		<VisibilityItem guid="guidVisualStudioPackageCmdSet" id="BreakInCurrentDocumentToolbarCommandId" context="UICONTEXT_Debugging" />
+		<VisibilityItem guid="guidVisualStudioPackageCmdSet" id="BreakInCurrentDocumentMenuCommandId" context="UICONTEXT_Debugging" />
+	</VisibilityConstraints>
+
+	<Symbols>
+		<GuidSymbol name="guidVisualStudioPackage" value="{5258bcf7-7850-4987-9a45-2c8a747e2b48}" />
+
+		<GuidSymbol name="guidVisualStudioPackageCmdSet" value="{c85a85a9-78cb-4a7c-97bf-d246bc680366}">
+			<IDSymbol name="BreakInCurrentDocumentToolbarCommandId" value="0x0001" />
+			<IDSymbol name="BreakInCurrentDocumentMenuCommandId" value="0x0002" />
+		</GuidSymbol>
+
+		<GuidSymbol name="guidImages" value="{a7111e20-a80d-4457-9b77-e161a764beb8}" >
+			<IDSymbol name="BreakInCurrentDocumentIcon" value="1" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
