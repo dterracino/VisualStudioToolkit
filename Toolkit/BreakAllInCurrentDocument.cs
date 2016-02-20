@@ -9,7 +9,6 @@ namespace TheSolutionEngineers.Toolkit
 {
 	internal sealed class BreakAllInCurrentDocument
 	{
-		public static readonly Guid CommandSet = new Guid("c85a85a9-78cb-4a7c-97bf-d246bc680366");
 		public static BreakAllInCurrentDocument Instance { get; private set; }
 
 		public const int ToolbarCommandId = 0x0001;
@@ -27,17 +26,12 @@ namespace TheSolutionEngineers.Toolkit
 
 			_package = package;
 
-			var commandService = ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-
-			if (commandService == null)
-			{
-				throw new ServiceUnavailableException(typeof(IMenuCommandService));
-			}
+			var commandService = ServiceProvider.GetMenuCommandService();
 
 			var commands = new[]
 			{
-				new OleMenuCommand(CommandCallback, new CommandID(CommandSet, ToolbarCommandId)), 
-				new OleMenuCommand(CommandCallback, new CommandID(CommandSet, MenuCommandId)), 
+				new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, ToolbarCommandId)), 
+				new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, MenuCommandId)), 
 			};
 
 			foreach (var command in commands)
@@ -47,16 +41,15 @@ namespace TheSolutionEngineers.Toolkit
 			}
 		}
 
+		public static void Initialize(VisualStudioPackage package)
+		{
+			Instance = new BreakAllInCurrentDocument(package);
+		}
+
 		private void Command_BeforeQueryStatus(object sender, EventArgs e)
 		{
 			var command = (OleMenuCommand) sender;
-
-			var dte = ServiceProvider.GetService(typeof (DTE)) as DTE;
-
-			if (dte == null)
-			{
-				throw new ServiceUnavailableException(typeof(DTE));
-			}
+			var dte = ServiceProvider.GetDte();
 
 			var currentlyRunning = (dte.Debugger.CurrentMode == dbgDebugMode.dbgRunMode);
 
@@ -64,19 +57,9 @@ namespace TheSolutionEngineers.Toolkit
 			command.Supported = currentlyRunning;
 		}
 
-		public static void Initialize(VisualStudioPackage package)
-		{
-			Instance = new BreakAllInCurrentDocument(package);
-		}
-
 		private void CommandCallback(object sender, EventArgs e)
 		{
-			var dte = ServiceProvider.GetService(typeof(DTE)) as DTE;
-
-			if (dte == null)
-			{
-				throw new ServiceUnavailableException(typeof(DTE));
-			}
+			var dte = ServiceProvider.GetDte();
 
 			var activeWindowBefore = dte.ActiveWindow;
 

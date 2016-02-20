@@ -53,7 +53,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BreakAllInCurrentDocument.cs" />
+    <Compile Include="CommandSet.cs" />
+    <Compile Include="LocateInSolutionExplorer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProviderExtensions.cs" />
     <Compile Include="VisualStudioPackage.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +174,7 @@
     <Content Include="Resources\VisualStudioPackage.ico" />
     <VSCTCompile Include="VisualStudioPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
+      <SubType>Designer</SubType>
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
