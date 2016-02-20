@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BreakInCurrentDocument.cs" />
+    <Compile Include="BreakAllInCurrentDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VisualStudioPackage.cs" />
   </ItemGroup>
@@ -167,7 +167,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\BreakInCurrentDocument.png" />
+    <Content Include="Resources\BreakAllInCurrentDocument.png" />
     <Content Include="Resources\VisualStudioPackage.ico" />
     <VSCTCompile Include="VisualStudioPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>

@@ -8,19 +8,19 @@
 
 	<Commands package="guidVisualStudioPackage">
 		<Buttons>
-			<Button guid="guidVisualStudioPackageCmdSet" id="BreakInCurrentDocumentToolbarCommandId" priority="0x0400" type="Button">
+			<Button guid="guidVisualStudioPackageCmdSet" id="BreakAllInCurrentDocumentToolbarCommandId" priority="0x0400" type="Button">
 				<Parent guid="guidVSDebugGroup" id="IDG_EXECUTION" />
-				<Icon guid="guidImages" id="BreakInCurrentDocumentIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Icon guid="guidImages" id="BreakAllInCurrentDocumentIcon" />
+				<CommandFlag>DefaultDisabled</CommandFlag>
 				<Strings>
 					<ButtonText>Break In Current Document</ButtonText>
 				</Strings>
 			</Button>
 
-			<Button guid="guidVisualStudioPackageCmdSet" id="BreakInCurrentDocumentMenuCommandId" priority="0x0400" type="Button">
+			<Button guid="guidVisualStudioPackageCmdSet" id="BreakAllInCurrentDocumentMenuCommandId" priority="0x0400" type="Button">
 				<Parent guid="guidVSDebugGroup" id="IDG_DEBUG_TOOLBAR_EXECUTION" />
-				<Icon guid="guidImages" id="BreakInCurrentDocumentIcon" />
+				<Icon guid="guidImages" id="BreakAllInCurrentDocumentIcon" />
+				<CommandFlag>DefaultDisabled</CommandFlag>
 				<Strings>
 					<ButtonText>Break In Current Document</ButtonText>
 				</Strings>
@@ -28,25 +28,20 @@
 		</Buttons>
 
 		<Bitmaps>
-			<Bitmap guid="guidImages" href="Resources\BreakInCurrentDocument.png" usedList="BreakInCurrentDocumentIcon"/>
+			<Bitmap guid="guidImages" href="Resources\BreakAllInCurrentDocument.png" usedList="BreakAllInCurrentDocumentIcon"/>
 		</Bitmaps>
 	</Commands>
-
-	<VisibilityConstraints>
-		<VisibilityItem guid="guidVisualStudioPackageCmdSet" id="BreakInCurrentDocumentToolbarCommandId" context="UICONTEXT_Debugging" />
-		<VisibilityItem guid="guidVisualStudioPackageCmdSet" id="BreakInCurrentDocumentMenuCommandId" context="UICONTEXT_Debugging" />
-	</VisibilityConstraints>
 
 	<Symbols>
 		<GuidSymbol name="guidVisualStudioPackage" value="{5258bcf7-7850-4987-9a45-2c8a747e2b48}" />
 
 		<GuidSymbol name="guidVisualStudioPackageCmdSet" value="{c85a85a9-78cb-4a7c-97bf-d246bc680366}">
-			<IDSymbol name="BreakInCurrentDocumentToolbarCommandId" value="0x0001" />
-			<IDSymbol name="BreakInCurrentDocumentMenuCommandId" value="0x0002" />
+			<IDSymbol name="BreakAllInCurrentDocumentToolbarCommandId" value="0x0001" />
+			<IDSymbol name="BreakAllInCurrentDocumentMenuCommandId" value="0x0002" />
 		</GuidSymbol>
 
 		<GuidSymbol name="guidImages" value="{a7111e20-a80d-4457-9b77-e161a764beb8}" >
-			<IDSymbol name="BreakInCurrentDocumentIcon" value="1" />
+			<IDSymbol name="BreakAllInCurrentDocumentIcon" value="1" />
 		</GuidSymbol>
 	</Symbols>
 </CommandTable>
