@@ -52,14 +52,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BreakAllInCurrentDocument.cs" />
+    <Compile Include="Commands\BreakAllInCurrentDocument.cs" />
     <Compile Include="CommandSet.cs" />
-    <Compile Include="LocateInSolutionExplorer.cs" />
+    <Compile Include="Extensions\DteExtensions.cs" />
+    <Compile Include="Commands\LocateInSolutionExplorer.cs" />
+    <Compile Include="Commands\LocateInSourceControlExplorer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceProviderExtensions.cs" />
+    <Compile Include="Extensions\ServiceProviderExtensions.cs" />
     <Compile Include="VisualStudioPackage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
@@ -81,6 +84,13 @@
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\y0qwpod1.3w1\Microsoft.TeamFoundation.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\y0qwpod1.3w1\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.CommandBars, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -139,6 +149,12 @@
       <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.9.0.9.0.30729\lib\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.TeamFoundation">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\y0qwpod1.3w1\Microsoft.VisualStudio.TeamFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TeamFoundation.VersionControl">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\y0qwpod1.3w1\Microsoft.VisualStudio.TeamFoundation.VersionControl.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.7.10.6070\lib\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
       <Private>True</Private>
@@ -166,6 +182,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>

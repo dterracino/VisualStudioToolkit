@@ -15,21 +15,21 @@
 		</Groups>
 
 		<Buttons>
-			<Button guid="guidVisualStudioPackageCmdSet" id="BreakAllInCurrentDocumentToolbarCommandId" priority="0x0400" type="Button">
+			<Button guid="guidVisualStudioPackageCmdSet" id="BreakAllInCurrentCommandId" priority="0x0400" type="Button">
 				<Parent guid="guidVSDebugGroup" id="IDG_EXECUTION" />
 				<Icon guid="guidImages" id="BreakAllInCurrentDocumentIcon" />
 				<CommandFlag>DefaultDisabled</CommandFlag>
 				<Strings>
-					<ButtonText>Break In Current Document</ButtonText>
+					<ButtonText>Break All In Current Document</ButtonText>
 				</Strings>
 			</Button>
 
-			<Button guid="guidVisualStudioPackageCmdSet" id="BreakAllInCurrentDocumentMenuCommandId" priority="0x0400" type="Button">
+			<Button guid="guidVisualStudioPackageCmdSet" id="BreakAllInCurrentCommandId" priority="0x0400" type="Button">
 				<Parent guid="guidVSDebugGroup" id="IDG_DEBUG_TOOLBAR_EXECUTION" />
 				<Icon guid="guidImages" id="BreakAllInCurrentDocumentIcon" />
 				<CommandFlag>DefaultDisabled</CommandFlag>
 				<Strings>
-					<ButtonText>Break In Current Document</ButtonText>
+					<ButtonText>Break All In Current Document</ButtonText>
 				</Strings>
 			</Button>
 
@@ -38,7 +38,16 @@
 				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
-					<ButtonText>Locate in solution explorer</ButtonText>
+					<ButtonText>Locate In Solution Explorer</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="guidVisualStudioPackageCmdSet" id="LocateInTfsCommandId" priority="0x0002" type="Button">
+				<Parent guid="guidVisualStudioPackageCmdSet" id="LocateFileMenuGroupId" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>Locate In Source Control Explorer</ButtonText>
 				</Strings>
 			</Button>
 		</Buttons>
@@ -57,9 +66,9 @@
 
 			<IDSymbol name="LocateFileMenuGroupId" value="0x1001" />
 			
-			<IDSymbol name="BreakAllInCurrentDocumentToolbarCommandId" value="0x0001" />
-			<IDSymbol name="BreakAllInCurrentDocumentMenuCommandId" value="0x0002" />
-			<IDSymbol name="LocateInSolutionExplorerCommandId" value="0x0003"/>
+			<IDSymbol name="BreakAllInCurrentCommandId" value="0x0001" />
+			<IDSymbol name="LocateInSolutionExplorerCommandId" value="0x0002"/>
+			<IDSymbol name="LocateInTfsCommandId" value="0x0003"/>
 		
 		</GuidSymbol>
 

@@ -3,6 +3,8 @@
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
+using TheSolutionEngineers.Toolkit.Commands;
+
 namespace TheSolutionEngineers.Toolkit
 {
 	[PackageRegistration(UseManagedResourcesOnly = true)]
@@ -17,8 +19,10 @@ namespace TheSolutionEngineers.Toolkit
 		protected override void Initialize()
 		{
             base.Initialize();
+
 		    BreakAllInCurrentDocument.Initialize(this);
 		    LocateInSolutionExplorer.Initialize(this);
+			LocateInSourceControlExplorer.Initialize(this);
 		}
 	}
 }

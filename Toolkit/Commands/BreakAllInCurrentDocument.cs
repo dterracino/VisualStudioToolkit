@@ -5,14 +5,15 @@ using EnvDTE;
 
 using Microsoft.VisualStudio.Shell;
 
-namespace TheSolutionEngineers.Toolkit
+using TheSolutionEngineers.Toolkit.Extensions;
+
+namespace TheSolutionEngineers.Toolkit.Commands
 {
 	internal sealed class BreakAllInCurrentDocument
 	{
 		public static BreakAllInCurrentDocument Instance { get; private set; }
 
-		public const int ToolbarCommandId = 0x0001;
-		public const int MenuCommandId = 0x0002;
+		public const int CommandId = 0x0001;
 
 		private readonly Package _package;
 		private IServiceProvider ServiceProvider => _package;
@@ -27,18 +28,9 @@ namespace TheSolutionEngineers.Toolkit
 			_package = package;
 
 			var commandService = ServiceProvider.GetMenuCommandService();
-
-			var commands = new[]
-			{
-				new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, ToolbarCommandId)), 
-				new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, MenuCommandId)), 
-			};
-
-			foreach (var command in commands)
-			{
-				command.BeforeQueryStatus += Command_BeforeQueryStatus;
-				commandService.AddCommand(command);
-			}
+			var command = new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, CommandId));
+			command.BeforeQueryStatus += Command_BeforeQueryStatus;
+			commandService.AddCommand(command);
 		}
 
 		public static void Initialize(VisualStudioPackage package)
@@ -48,7 +40,7 @@ namespace TheSolutionEngineers.Toolkit
 
 		private void Command_BeforeQueryStatus(object sender, EventArgs e)
 		{
-			var command = (OleMenuCommand) sender;
+			var command = (OleMenuCommand)sender;
 			var dte = ServiceProvider.GetDte();
 
 			var currentlyRunning = (dte.Debugger.CurrentMode == dbgDebugMode.dbgRunMode);

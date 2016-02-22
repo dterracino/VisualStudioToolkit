@@ -7,13 +7,15 @@ using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 
-namespace TheSolutionEngineers.Toolkit
+using TheSolutionEngineers.Toolkit.Extensions;
+
+namespace TheSolutionEngineers.Toolkit.Commands
 {
 	internal sealed class LocateInSolutionExplorer
 	{
 		public static LocateInSolutionExplorer Instance { get; private set; }
 
-		public const int MenuCommandId = 0x0003;
+		public const int CommandId = 0x0002;
 
 		private readonly Package _package;
 		private IServiceProvider ServiceProvider => _package;
@@ -29,7 +31,7 @@ namespace TheSolutionEngineers.Toolkit
 
 			var commandService = ServiceProvider.GetMenuCommandService();
 
-			var command = new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, MenuCommandId));
+			var command = new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, CommandId));
 			command.BeforeQueryStatus += Command_BeforeQueryStatus;
 			commandService.AddCommand(command);
 		}
