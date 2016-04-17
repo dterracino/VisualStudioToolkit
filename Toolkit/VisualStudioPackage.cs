@@ -3,6 +3,8 @@
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
+using PaddleSDK;
+
 using TheSolutionEngineers.Toolkit.Commands;
 
 namespace TheSolutionEngineers.Toolkit
@@ -18,7 +20,14 @@ namespace TheSolutionEngineers.Toolkit
 
 		protected override void Initialize()
 		{
-            base.Initialize();
+			base.Initialize();
+
+			Paddle.CreateSharedInstance(PaddleConfiguration.ApiKey, PaddleConfiguration.VendorId, PaddleConfiguration.ProductId);
+
+			if (!Paddle.SharedInstance.StartLicensing())
+			{
+				return;
+			}
 
 		    BreakAllInCurrentDocument.Initialize(this);
 		    LocateInSolutionExplorer.Initialize(this);
