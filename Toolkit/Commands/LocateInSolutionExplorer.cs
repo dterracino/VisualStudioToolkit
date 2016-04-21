@@ -46,11 +46,12 @@ namespace TheSolutionEngineers.Toolkit.Commands
 			var command = (OleMenuCommand) sender;
 			var dte = ServiceProvider.GetDte();
 
-			var hasProjectItem = (dte.ActiveDocument?.ProjectItem != null);
+			var hasProject = (dte.ActiveDocument?.ProjectItem != null) &&
+			                 (dte.ActiveDocument.ProjectItem.Kind != ProjectType.MiscellaneousFiles);
 
-			command.Visible = hasProjectItem;
-			command.Supported = hasProjectItem;
-			command.Enabled = hasProjectItem;
+			command.Visible = hasProject;
+			command.Supported = hasProject;
+			command.Enabled = hasProject;
 		}
 
 		private void CommandCallback(object sender, EventArgs e)

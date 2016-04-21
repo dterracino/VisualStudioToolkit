@@ -61,6 +61,7 @@
     <Compile Include="Commands\LocateInSourceControlExplorer.cs" />
     <Compile Include="PaddleConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisualStudio\ProjectType.cs" />
     <Compile Include="VisualStudio\SelectionType.cs" />
     <Compile Include="VisualStudio\ServiceProviderExtensions.cs" />
     <Compile Include="VisualStudioPackage.cs" />
