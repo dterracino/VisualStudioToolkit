@@ -7,7 +7,7 @@ using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 
-using TheSolutionEngineers.Toolkit.Extensions;
+using TheSolutionEngineers.Toolkit.VisualStudio;
 
 namespace TheSolutionEngineers.Toolkit.Commands
 {

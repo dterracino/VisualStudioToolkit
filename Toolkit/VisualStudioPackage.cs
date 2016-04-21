@@ -32,6 +32,8 @@ namespace TheSolutionEngineers.Toolkit
 		    BreakAllInCurrentDocument.Initialize(this);
 		    LocateInSolutionExplorer.Initialize(this);
 			LocateInSourceControlExplorer.Initialize(this);
+			EditSolutionFile.Initialize(this);
+			EditProjectFile.Initialize(this);
 		}
 	}
 }

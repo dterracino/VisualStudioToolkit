@@ -12,6 +12,14 @@
 			<Group guid="guidVisualStudioPackageCmdSet" id="LocateFileMenuGroupId" priority="0x0001">
 				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_EZDOCWINTAB" />
 			</Group>
+
+			<Group guid="guidVisualStudioPackageCmdSet" id="SolutionContextMenuGroupId" priority="0x0001">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
+			</Group>
+
+			<Group guid="guidVisualStudioPackageCmdSet" id="ProjectContextMenuGroupId" priority="0x0001">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+			</Group>
 		</Groups>
 
 		<Buttons>
@@ -50,6 +58,20 @@
 					<ButtonText>Locate In Source Control Explorer</ButtonText>
 				</Strings>
 			</Button>
+
+			<Button guid="guidVisualStudioPackageCmdSet" id="EditSolutionFileCommandId" priority="0x0001" type="Button">
+				<Parent guid="guidVisualStudioPackageCmdSet" id="SolutionContextMenuGroupId" />
+				<Strings>
+					<ButtonText>Edit Solution File</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="guidVisualStudioPackageCmdSet" id="EditProjectFileCommandId" priority="0x0001" type="Button">
+				<Parent guid="guidVisualStudioPackageCmdSet" id="ProjectContextMenuGroupId" />
+				<Strings>
+					<ButtonText>Edit Project File</ButtonText>
+				</Strings>
+			</Button>
 		</Buttons>
 
 		<Bitmaps>
@@ -59,17 +81,21 @@
 
 	<Symbols>
 		<GuidSymbol name="guidGroup" value="{CF16ADBE-E9D6-4B4F-8503-BC626AA47B5F}" />
-		
+
 		<GuidSymbol name="guidVisualStudioPackage" value="{5258bcf7-7850-4987-9a45-2c8a747e2b48}" />
 
 		<GuidSymbol name="guidVisualStudioPackageCmdSet" value="{c85a85a9-78cb-4a7c-97bf-d246bc680366}">
 
 			<IDSymbol name="LocateFileMenuGroupId" value="0x1001" />
-			
+			<IDSymbol name="SolutionContextMenuGroupId" value="0x1002"/>
+			<IDSymbol name="ProjectContextMenuGroupId" value="0x1003"/>
+
 			<IDSymbol name="BreakAllInCurrentCommandId" value="0x0001" />
 			<IDSymbol name="LocateInSolutionExplorerCommandId" value="0x0002"/>
 			<IDSymbol name="LocateInTfsCommandId" value="0x0003"/>
-		
+			<IDSymbol name="EditSolutionFileCommandId" value="0x0004"/>
+			<IDSymbol name="EditProjectFileCommandId" value="0x0005"/>
+
 		</GuidSymbol>
 
 		<GuidSymbol name="guidImages" value="{a7111e20-a80d-4457-9b77-e161a764beb8}">

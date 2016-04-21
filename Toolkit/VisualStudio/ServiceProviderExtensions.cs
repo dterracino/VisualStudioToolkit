@@ -7,7 +7,7 @@ using EnvDTE80;
 
 using Microsoft.VisualStudio.Shell;
 
-namespace TheSolutionEngineers.Toolkit.Extensions
+namespace TheSolutionEngineers.Toolkit.VisualStudio
 {
 	internal static class ServiceProviderExtensions
 	{

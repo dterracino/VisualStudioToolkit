@@ -4,7 +4,7 @@ using System.Threading;
 
 using Microsoft.VisualStudio.Shell;
 
-using TheSolutionEngineers.Toolkit.Extensions;
+using TheSolutionEngineers.Toolkit.VisualStudio;
 
 namespace TheSolutionEngineers.Toolkit.Commands
 {
@@ -44,7 +44,7 @@ namespace TheSolutionEngineers.Toolkit.Commands
 			var dte = ServiceProvider.GetDte();
 			var vc = dte.GetTfsVersionControl();
 
-			var enabled = vc.SolutionWorkspace.IsLocalPathMapped(dte.ActiveDocument.FullName);
+			var enabled = vc.SolutionWorkspace?.IsLocalPathMapped(dte.ActiveDocument.FullName) == true;
 
 			command.Visible = enabled;
 			command.Enabled = enabled;
