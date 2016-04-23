@@ -40,7 +40,7 @@ namespace TheSolutionEngineers.Toolkit.Commands
 		private void CommandCallback(object sender, EventArgs e)
 		{
 			var dte = ServiceProvider.GetDte();
-			var projectPath = dte.GetSelectedSolutionExplorerItem<Project>().FullName;
+			var projectPath = dte.SelectedItems.Item(1).Project.FullName;
 
 			dte.ExecuteCommand("Project.UnloadProject");
 			dte.ItemOperations.OpenFile(projectPath, ViewKind.Text);

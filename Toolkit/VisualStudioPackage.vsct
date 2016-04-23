@@ -20,6 +20,10 @@
 			<Group guid="guidVisualStudioPackageCmdSet" id="ProjectContextMenuGroupId" priority="0x0001">
 				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
 			</Group>
+
+			<Group guid="guidVisualStudioPackageCmdSet" id="ItemContextMenuGroupId" priority="0x0001">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+			</Group>
 		</Groups>
 
 		<Buttons>
@@ -72,6 +76,15 @@
 					<ButtonText>Edit Project File</ButtonText>
 				</Strings>
 			</Button>
+
+			<Button guid="guidVisualStudioPackageCmdSet" id="CompareFilesCommandId" priority="0x0001" type="Button">
+				<Parent guid="guidVisualStudioPackageCmdSet" id="ItemContextMenuGroupId"/>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>Compare Files</ButtonText>
+				</Strings>
+			</Button>
 		</Buttons>
 
 		<Bitmaps>
@@ -89,12 +102,14 @@
 			<IDSymbol name="LocateFileMenuGroupId" value="0x1001" />
 			<IDSymbol name="SolutionContextMenuGroupId" value="0x1002"/>
 			<IDSymbol name="ProjectContextMenuGroupId" value="0x1003"/>
+			<IDSymbol name="ItemContextMenuGroupId" value="0x1004"/>
 
 			<IDSymbol name="BreakAllInCurrentCommandId" value="0x0001" />
 			<IDSymbol name="LocateInSolutionExplorerCommandId" value="0x0002"/>
 			<IDSymbol name="LocateInTfsCommandId" value="0x0003"/>
 			<IDSymbol name="EditSolutionFileCommandId" value="0x0004"/>
 			<IDSymbol name="EditProjectFileCommandId" value="0x0005"/>
+			<IDSymbol name="CompareFilesCommandId" value="0x0006"/>
 
 		</GuidSymbol>
 

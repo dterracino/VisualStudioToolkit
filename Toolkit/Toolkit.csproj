@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Commands\BreakAllInCurrentDocument.cs" />
     <Compile Include="CommandSet.cs" />
+    <Compile Include="Commands\CompareFiles.cs" />
     <Compile Include="Commands\EditProjectFile.cs" />
     <Compile Include="Commands\EditSolutionFile.cs" />
     <Compile Include="VisualStudio\DteExtensions.cs" />
@@ -62,7 +63,6 @@
     <Compile Include="PaddleConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VisualStudio\ProjectType.cs" />
-    <Compile Include="VisualStudio\SelectionType.cs" />
     <Compile Include="VisualStudio\ServiceProviderExtensions.cs" />
     <Compile Include="VisualStudioPackage.cs" />
     <Compile Include="VisualStudio\ViewKind.cs" />

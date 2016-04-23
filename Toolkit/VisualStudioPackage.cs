@@ -34,6 +34,7 @@ namespace TheSolutionEngineers.Toolkit
 			LocateInSourceControlExplorer.Initialize(this);
 			EditSolutionFile.Initialize(this);
 			EditProjectFile.Initialize(this);
+			CompareFiles.Initialize(this);
 		}
 	}
 }
