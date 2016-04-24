@@ -1,56 +1,34 @@
 ﻿using System;
-using System.ComponentModel.Design;
 using System.IO;
 
 using Microsoft.TeamFoundation.VersionControl.Client;
-using Microsoft.VisualStudio.Shell;
 
 using TheSolutionEngineers.Toolkit.VisualStudio;
 
 namespace TheSolutionEngineers.Toolkit.Commands
 {
-	public sealed class CompareFiles
+	internal sealed class CompareFiles : SingleCommand<CompareFiles>
 	{
-		public static CompareFiles Instance { get; private set; }
+		private CompareFiles(int commandId, VisualStudioPackage package) : base(commandId, package) { }
 
-		public const int CommandId = 0x0006;
-
-		private readonly Package _package;
-		private IServiceProvider ServiceProvider => _package;
-
-		private CompareFiles(VisualStudioPackage package)
+		public static void Initialize(int commandId, VisualStudioPackage package)
 		{
-			if (package == null)
+			Instance = new CompareFiles(commandId, package);
+		}
+
+		protected override bool ShouldEnableCommand()
+		{
+			if (!Package.Configuration.IsCompareFilesEnabled)
 			{
-				throw new ArgumentNullException(nameof(package));
+				return false;
 			}
 
-			_package = package;
-
-			var commandService = ServiceProvider.GetMenuCommandService();
-			var command = new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, CommandId));
-			command.BeforeQueryStatus += CommandOnBeforeQueryStatus;
-			commandService.AddCommand(command);
-		}
-
-		private void CommandOnBeforeQueryStatus(object sender, EventArgs eventArgs)
-		{
-			var command = (OleMenuCommand)sender;
 			var dte = ServiceProvider.GetDte();
 
-			var hasSelectedTwoFiles = (dte.SelectedItems.Count == 2);
-
-			command.Visible = hasSelectedTwoFiles;
-			command.Supported = hasSelectedTwoFiles;
-			command.Enabled = hasSelectedTwoFiles;
+			return (dte.SelectedItems.Count == 2);
 		}
 
-		public static void Initialize(VisualStudioPackage package)
-		{
-			Instance = new CompareFiles(package);
-		}
-
-		private void CommandCallback(object sender, EventArgs e)
+		protected override void InvokeHandler(object sender, EventArgs e)
 		{
 			var dte = ServiceProvider.GetDte();
 

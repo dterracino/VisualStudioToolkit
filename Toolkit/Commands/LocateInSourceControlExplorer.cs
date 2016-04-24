@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.Design;
 
 using EnvDTE;
 
@@ -11,15 +10,8 @@ using Thread = System.Threading.Thread;
 
 namespace TheSolutionEngineers.Toolkit.Commands
 {
-	internal sealed class LocateInSourceControlExplorer
+	internal sealed class LocateInSourceControlExplorer : SingleCommand<LocateInSourceControlExplorer>
 	{
-		public static LocateInSourceControlExplorer Instance { get; private set; }
-
-		public const int CommandId = 0x0003;
-
-		private readonly Package _package;
-		private IServiceProvider ServiceProvider => _package;
-
 		private string SelectedItemPath
 		{
 			get
@@ -52,39 +44,20 @@ namespace TheSolutionEngineers.Toolkit.Commands
 			}
 		}
 
-		private LocateInSourceControlExplorer(VisualStudioPackage package)
+		private LocateInSourceControlExplorer(int commandId, VisualStudioPackage package) : base(commandId, package) { }
+
+		public static void Initialize(int commandId, VisualStudioPackage package)
 		{
-			if (package == null)
+			Instance = new LocateInSourceControlExplorer(commandId, package);
+		}
+
+		protected override bool ShouldEnableCommand()
+		{
+			if (!Package.Configuration.IsLocateInSourceControlExplorerEnabled)
 			{
-				throw new ArgumentNullException(nameof(package));
+				return false;
 			}
 
-			_package = package;
-
-			var commandService = ServiceProvider.GetMenuCommandService();
-
-			var command = new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, CommandId));
-			command.BeforeQueryStatus += Command_BeforeQueryStatus;
-			commandService.AddCommand(command);
-		}
-
-		public static void Initialize(VisualStudioPackage package)
-		{
-			Instance = new LocateInSourceControlExplorer(package);
-		}
-
-		private void Command_BeforeQueryStatus(object sender, EventArgs e)
-		{
-			var command = (OleMenuCommand) sender;
-			var enabled = ShouldEnableCommand();
-
-			command.Visible = enabled;
-			command.Enabled = enabled;
-			command.Supported = enabled;
-		}
-
-		private bool ShouldEnableCommand()
-		{
 			var dte = ServiceProvider.GetDte();
 			var vc = dte.GetTfsVersionControl();
 
@@ -98,7 +71,7 @@ namespace TheSolutionEngineers.Toolkit.Commands
 			return vc.SolutionWorkspace?.IsLocalPathMapped(selectedItemPath) == true;
 		}
 
-		private void CommandCallback(object sender, EventArgs e)
+		protected override void InvokeHandler(object sender, EventArgs eventArgs)
 		{
 			var dte = ServiceProvider.GetDte();
 			var vc = dte.GetTfsVersionControl();

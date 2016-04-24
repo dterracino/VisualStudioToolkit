@@ -1,43 +1,24 @@
 ﻿using System;
-using System.ComponentModel.Design;
-
-using EnvDTE;
-
-using Microsoft.VisualStudio.Shell;
 
 using TheSolutionEngineers.Toolkit.VisualStudio;
 
 namespace TheSolutionEngineers.Toolkit.Commands
 {
-	internal sealed class EditProjectFile
+	internal sealed class EditProjectFile : SingleCommand<EditProjectFile>
 	{
-		public static EditProjectFile Instance { get; private set; }
+		private EditProjectFile(int commandId, VisualStudioPackage package) : base(commandId, package) { }
 
-		public const int CommandId = 0x0005;
-
-		private readonly Package _package;
-		private IServiceProvider ServiceProvider => _package;
-
-		private EditProjectFile(VisualStudioPackage package)
+		public static void Initialize(int commandId, VisualStudioPackage package)
 		{
-			if (package == null)
-			{
-				throw new ArgumentNullException(nameof(package));
-			}
-
-			_package = package;
-
-			var commandService = ServiceProvider.GetMenuCommandService();
-			var command = new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, CommandId));
-			commandService.AddCommand(command);
+			Instance = new EditProjectFile(commandId, package);
 		}
 
-		public static void Initialize(VisualStudioPackage package)
+		protected override bool ShouldEnableCommand()
 		{
-			Instance = new EditProjectFile(package);
+			return Package.Configuration.IsEditProjectSolutionFileEnabled;
 		}
 
-		private void CommandCallback(object sender, EventArgs e)
+		protected override void InvokeHandler(object sender, EventArgs e)
 		{
 			var dte = ServiceProvider.GetDte();
 			var projectPath = dte.SelectedItems.Item(1).Project.FullName;

@@ -1,60 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 
 using EnvDTE;
 
 using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell;
 
 using TheSolutionEngineers.Toolkit.VisualStudio;
 
 namespace TheSolutionEngineers.Toolkit.Commands
 {
-	internal sealed class LocateInSolutionExplorer
+	internal sealed class LocateInSolutionExplorer : SingleCommand<LocateInSolutionExplorer>
 	{
-		public static LocateInSolutionExplorer Instance { get; private set; }
+		private LocateInSolutionExplorer(int commandId, VisualStudioPackage package) : base(commandId, package) { }
 
-		public const int CommandId = 0x0002;
-
-		private readonly Package _package;
-		private IServiceProvider ServiceProvider => _package;
-
-		private LocateInSolutionExplorer(VisualStudioPackage package)
+		public static void Initialize(int commandId, VisualStudioPackage package)
 		{
-			if (package == null)
+			Instance = new LocateInSolutionExplorer(commandId, package);
+		}
+
+		protected override bool ShouldEnableCommand()
+		{
+			if (!Package.Configuration.IsLocateInSolutionExplorerEnabled)
 			{
-				throw new ArgumentNullException(nameof(package));
+				return false;
 			}
 
-			_package = package;
-
-			var commandService = ServiceProvider.GetMenuCommandService();
-
-			var command = new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, CommandId));
-			command.BeforeQueryStatus += Command_BeforeQueryStatus;
-			commandService.AddCommand(command);
-		}
-
-		public static void Initialize(VisualStudioPackage package)
-		{
-			Instance = new LocateInSolutionExplorer(package);
-		}
-
-		private void Command_BeforeQueryStatus(object sender, EventArgs e)
-		{
-			var command = (OleMenuCommand) sender;
 			var dte = ServiceProvider.GetDte();
 
-			var hasProject = (dte.ActiveDocument?.ProjectItem != null) &&
-			                 (dte.ActiveDocument.ProjectItem.Kind != ProjectType.MiscellaneousFiles);
-
-			command.Visible = hasProject;
-			command.Supported = hasProject;
-			command.Enabled = hasProject;
+			return
+				(dte.ActiveDocument?.ProjectItem != null) &&
+				(dte.ActiveDocument.ProjectItem.Kind != ProjectType.MiscellaneousFiles);
 		}
 
-		private void CommandCallback(object sender, EventArgs e)
+		protected override void InvokeHandler(object sender, EventArgs e)
 		{
 			var dte = ServiceProvider.GetDte();
 

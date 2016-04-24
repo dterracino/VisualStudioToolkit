@@ -54,9 +54,14 @@
   <ItemGroup>
     <Compile Include="Commands\BreakAllInCurrentDocument.cs" />
     <Compile Include="CommandSet.cs" />
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CompareFiles.cs" />
     <Compile Include="Commands\EditProjectFile.cs" />
     <Compile Include="Commands\EditSolutionFile.cs" />
+    <Compile Include="Commands\SingleCommand.cs" />
+    <Compile Include="ConfigurationPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="VisualStudio\DteExtensions.cs" />
     <Compile Include="Commands\LocateInSolutionExplorer.cs" />
     <Compile Include="Commands\LocateInSourceControlExplorer.cs" />

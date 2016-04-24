@@ -1,55 +1,33 @@
 ﻿using System;
-using System.ComponentModel.Design;
 
 using EnvDTE;
-
-using Microsoft.VisualStudio.Shell;
 
 using TheSolutionEngineers.Toolkit.VisualStudio;
 
 namespace TheSolutionEngineers.Toolkit.Commands
 {
-	internal sealed class BreakAllInCurrentDocument
+	internal sealed class BreakAllInCurrentDocument : SingleCommand<BreakAllInCurrentDocument>
 	{
-		public static BreakAllInCurrentDocument Instance { get; private set; }
+		private BreakAllInCurrentDocument(int commandId, VisualStudioPackage package) : base(commandId, package) { }
 
-		public const int CommandId = 0x0001;
-
-		private readonly Package _package;
-		private IServiceProvider ServiceProvider => _package;
-
-		private BreakAllInCurrentDocument(VisualStudioPackage package)
+		public static void Initialize(int commandId, VisualStudioPackage package)
 		{
-			if (package == null)
+			Instance = new BreakAllInCurrentDocument(commandId, package);
+		}
+
+		protected override bool ShouldEnableCommand()
+		{
+			if (!Package.Configuration.IsBreakAllInCurrentDocumentEnabled)
 			{
-				throw new ArgumentNullException(nameof(package));
+				return false;
 			}
 
-			_package = package;
-
-			var commandService = ServiceProvider.GetMenuCommandService();
-			var command = new OleMenuCommand(CommandCallback, new CommandID(CommandSet.Guid, CommandId));
-			command.BeforeQueryStatus += Command_BeforeQueryStatus;
-			commandService.AddCommand(command);
-		}
-
-		public static void Initialize(VisualStudioPackage package)
-		{
-			Instance = new BreakAllInCurrentDocument(package);
-		}
-
-		private void Command_BeforeQueryStatus(object sender, EventArgs e)
-		{
-			var command = (OleMenuCommand)sender;
 			var dte = ServiceProvider.GetDte();
 
-			var currentlyRunning = (dte.Debugger.CurrentMode == dbgDebugMode.dbgRunMode);
-
-			command.Enabled = currentlyRunning;
-			command.Supported = currentlyRunning;
+			return (dte.Debugger.CurrentMode == dbgDebugMode.dbgRunMode);
 		}
 
-		private void CommandCallback(object sender, EventArgs e)
+		protected override void InvokeHandler(object sender, EventArgs eventArgs)
 		{
 			var dte = ServiceProvider.GetDte();
 
