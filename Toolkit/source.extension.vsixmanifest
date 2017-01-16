@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 	<Metadata>
-		<Identity Id="TheSolutionEngineers.Toolkit" Version="1.4" Language="en-US" Publisher="The Solution Engineers" />
+		<Identity Id="TheSolutionEngineers.Toolkit" Version="1.4" Language="en-US" Publisher="Thijs Tijsma" />
 		<DisplayName>The Solution Engineer Toolkit</DisplayName>
 		<Description xml:space="preserve">This toolkit provides you with a few tools that will help you boost your daily productivity in Visual Studio.</Description>
 	</Metadata>
