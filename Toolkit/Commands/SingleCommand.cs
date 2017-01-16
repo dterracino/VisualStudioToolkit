@@ -27,7 +27,7 @@ namespace TheSolutionEngineers.Toolkit.Commands
 
 		protected virtual bool ShouldEnableCommand()
 		{
-			throw new NotImplementedException();
+			return true;
 		}
 
 		protected virtual void InvokeHandler(object sender, EventArgs eventArgs)
