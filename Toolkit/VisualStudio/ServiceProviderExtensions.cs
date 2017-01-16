@@ -11,21 +11,28 @@ namespace TheSolutionEngineers.Toolkit.VisualStudio
 {
 	internal static class ServiceProviderExtensions
 	{
-		public static T GetService<T>(this IServiceProvider serviceProvider) where T : class
+		public static TTarget GetService<TSource, TTarget>(this IServiceProvider serviceProvider)
+			where TSource : class
+			where TTarget : class
 		{
-			var service = serviceProvider.GetService(typeof(T)) as T;
+			var service = serviceProvider.GetService(typeof(TSource)) as TTarget;
 
 			if (service == null)
 			{
-				throw new ServiceUnavailableException(typeof(T));
+				throw new ServiceUnavailableException(typeof(TSource));
 			}
 
 			return service;
 		}
 
+		public static T GetService<T>(this IServiceProvider serviceProvider) where T : class
+		{
+			return serviceProvider.GetService<T, T>();
+		}
+
 		public static DTE2 GetDte(this IServiceProvider serviceProvider)
 		{
-			return (DTE2) serviceProvider.GetService<DTE>();
+			return serviceProvider.GetService<DTE, DTE2>();
 		}
 
 		public static IMenuCommandService GetMenuCommandService(this IServiceProvider serviceProvider)
