@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 // Product
 
 [assembly: AssemblyProduct("The Solution Engineer Toolkit for Visual Studio")]
-[assembly: AssemblyVersion("1.2")]
+[assembly: AssemblyVersion("1.4")]
 
 // COM
 
