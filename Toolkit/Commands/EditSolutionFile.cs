@@ -1,8 +1,8 @@
 ﻿using System;
 
-using TheSolutionEngineers.Toolkit.VisualStudio;
+using ThijsTijsma.VisualStudioToolkit.VisualStudio;
 
-namespace TheSolutionEngineers.Toolkit.Commands
+namespace ThijsTijsma.VisualStudioToolkit.Commands
 {
 	internal sealed class EditSolutionFile : SingleCommand<EditSolutionFile>
 	{

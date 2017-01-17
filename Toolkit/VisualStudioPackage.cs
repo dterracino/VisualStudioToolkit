@@ -1,11 +1,10 @@
 ﻿using System.Runtime.InteropServices;
-
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-using TheSolutionEngineers.Toolkit.Commands;
+using ThijsTijsma.VisualStudioToolkit.Commands;
 
-namespace TheSolutionEngineers.Toolkit
+namespace ThijsTijsma.VisualStudioToolkit
 {
 	[PackageRegistration(UseManagedResourcesOnly = true)]
 	[InstalledProductRegistration("The Solution Engineer Toolkit", "", "1.0", IconResourceID = 400)]

@@ -1,8 +1,7 @@
 ﻿using EnvDTE80;
-
 using Microsoft.VisualStudio.TeamFoundation.VersionControl;
 
-namespace TheSolutionEngineers.Toolkit.VisualStudio
+namespace ThijsTijsma.VisualStudioToolkit.VisualStudio
 {
 	public static class DteExtensions
 	{

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.Design;
 
-using TheSolutionEngineers.Toolkit.VisualStudio;
+using ThijsTijsma.VisualStudioToolkit.VisualStudio;
 
-namespace TheSolutionEngineers.Toolkit.Commands
+namespace ThijsTijsma.VisualStudioToolkit.Commands
 {
 	internal class Command<T>
 	{

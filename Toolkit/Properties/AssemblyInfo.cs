@@ -3,11 +3,11 @@ using System.Runtime.InteropServices;
 
 // Company
 
-[assembly: AssemblyCompany("The Solution Engineers")]
+[assembly: AssemblyCompany("Thijs Tijsma")]
 
 // Product
 
-[assembly: AssemblyProduct("The Solution Engineer Toolkit for Visual Studio")]
+[assembly: AssemblyProduct("Visual Studio Toolkit")]
 [assembly: AssemblyVersion("1.4")]
 
 // COM

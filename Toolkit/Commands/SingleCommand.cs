@@ -1,9 +1,8 @@
 ﻿using System;
 using System.ComponentModel.Design;
-
 using Microsoft.VisualStudio.Shell;
 
-namespace TheSolutionEngineers.Toolkit.Commands
+namespace ThijsTijsma.VisualStudioToolkit.Commands
 {
 	internal class SingleCommand<T> : Command<T>
 	{

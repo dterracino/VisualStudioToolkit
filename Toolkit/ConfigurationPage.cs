@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
-
 using Microsoft.VisualStudio.Shell;
 
-namespace TheSolutionEngineers.Toolkit
+namespace ThijsTijsma.VisualStudioToolkit
 {
 	public class ConfigurationPage : DialogPage
 	{

@@ -1,10 +1,9 @@
 ﻿using System;
-
 using EnvDTE;
 
-using TheSolutionEngineers.Toolkit.VisualStudio;
+using ThijsTijsma.VisualStudioToolkit.VisualStudio;
 
-namespace TheSolutionEngineers.Toolkit.Commands
+namespace ThijsTijsma.VisualStudioToolkit.Commands
 {
 	internal sealed class BreakAllInCurrentDocument : SingleCommand<BreakAllInCurrentDocument>
 	{

@@ -1,4 +1,4 @@
-﻿namespace TheSolutionEngineers.Toolkit.VisualStudio
+﻿namespace ThijsTijsma.VisualStudioToolkit.VisualStudio
 {
 	public static class ViewKind
 	{

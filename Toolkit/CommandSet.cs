@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TheSolutionEngineers.Toolkit
+namespace ThijsTijsma.VisualStudioToolkit
 {
 	internal class CommandSet
 	{

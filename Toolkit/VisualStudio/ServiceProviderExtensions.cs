@@ -1,13 +1,10 @@
 ﻿using System;
 using System.ComponentModel.Design;
-
 using EnvDTE;
-
 using EnvDTE80;
-
 using Microsoft.VisualStudio.Shell;
 
-namespace TheSolutionEngineers.Toolkit.VisualStudio
+namespace ThijsTijsma.VisualStudioToolkit.VisualStudio
 {
 	internal static class ServiceProviderExtensions
 	{

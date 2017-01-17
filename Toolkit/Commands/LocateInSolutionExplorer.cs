@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using EnvDTE;
-
 using Microsoft.VisualStudio;
 
-using TheSolutionEngineers.Toolkit.VisualStudio;
+using ThijsTijsma.VisualStudioToolkit.VisualStudio;
 
-namespace TheSolutionEngineers.Toolkit.Commands
+namespace ThijsTijsma.VisualStudioToolkit.Commands
 {
 	internal sealed class LocateInSolutionExplorer : SingleCommand<LocateInSolutionExplorer>
 	{

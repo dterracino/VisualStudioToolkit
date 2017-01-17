@@ -1,14 +1,11 @@
 ﻿using System;
-
 using EnvDTE;
-
 using Microsoft.VisualStudio.Shell;
 
-using TheSolutionEngineers.Toolkit.VisualStudio;
-
+using ThijsTijsma.VisualStudioToolkit.VisualStudio;
 using Thread = System.Threading.Thread;
 
-namespace TheSolutionEngineers.Toolkit.Commands
+namespace ThijsTijsma.VisualStudioToolkit.Commands
 {
 	internal sealed class LocateInSourceControlExplorer : SingleCommand<LocateInSourceControlExplorer>
 	{

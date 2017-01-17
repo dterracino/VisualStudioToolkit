@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TheSolutionEngineers.Toolkit.VisualStudio
+﻿namespace ThijsTijsma.VisualStudioToolkit.VisualStudio
 {
 	public static class ProjectType
 	{

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
-
 using Microsoft.TeamFoundation.VersionControl.Client;
 
-using TheSolutionEngineers.Toolkit.VisualStudio;
+using ThijsTijsma.VisualStudioToolkit.VisualStudio;
 
-namespace TheSolutionEngineers.Toolkit.Commands
+namespace ThijsTijsma.VisualStudioToolkit.Commands
 {
 	internal sealed class CompareFiles : SingleCommand<CompareFiles>
 	{
