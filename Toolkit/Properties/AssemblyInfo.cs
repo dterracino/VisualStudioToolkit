@@ -1,14 +1,16 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
+using ThijsTijsma.VisualStudioToolkit;
+
 // Company
 
 [assembly: AssemblyCompany("Thijs Tijsma")]
 
 // Product
 
-[assembly: AssemblyProduct("Visual Studio Toolkit")]
-[assembly: AssemblyVersion("1.4")]
+[assembly: AssemblyProduct(VisualStudioPackage.Name)]
+[assembly: AssemblyVersion(VisualStudioPackage.Version)]
 
 // COM
 

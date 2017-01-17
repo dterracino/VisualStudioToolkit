@@ -7,14 +7,18 @@ using ThijsTijsma.VisualStudioToolkit.Commands;
 namespace ThijsTijsma.VisualStudioToolkit
 {
 	[PackageRegistration(UseManagedResourcesOnly = true)]
-	[InstalledProductRegistration("The Solution Engineer Toolkit", "", "1.0", IconResourceID = 400)]
+	[InstalledProductRegistration(Name, "", Version, IconResourceID = 400)]
 	[Guid(PackageGuidString)]
 	[ProvideMenuResource("Menus.ctmenu", 1)]
 	[ProvideAutoLoad(UIContextGuids.SolutionExists)]
-	[ProvideOptionPage(typeof(ConfigurationPage), "The Solution Engineer Toolkit", "General", 0, 0, true)]
+	[ProvideOptionPage(typeof(ConfigurationPage), Name, "General", 0, 0, true)]
 	public sealed class VisualStudioPackage : Package
 	{
 		public const string PackageGuidString = "5258bcf7-7850-4987-9a45-2c8a747e2b48";
+
+		public const string Name = "Visual Studio Toolkit";
+		public const string Version = "1.4.1";
+
 		public ConfigurationPage Configuration { get; private set; }
 
 		protected override void Initialize()
